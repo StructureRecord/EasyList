@@ -1,0 +1,27 @@
+{
+  "name": "easylist",
+  "version": "0.0.1",
+  "description": "A package to implement linked list",
+  "main": "index.ts",
+  "scripts": {
+    "start": "tsc --build tsconfig.json --watch",
+    "build": "tsc --build tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StructureRecord/EasyList.git"
+  },
+  "keywords": [
+    "Linked",
+    "Lists"
+  ],
+  "author": "StructureRecord",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StructureRecord/EasyList/issues"
+  },
+  "homepage": "https://github.com/StructureRecord/EasyList#readme",
+  "devDependencies": {
+    "typescript": "^3.9.2"
+  }
+}
