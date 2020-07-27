@@ -59,7 +59,7 @@ export default class BaseLinkedList {
 
   insertNode = (data: any, index: number) => {}
 
-  deleteNode = (index: any) => {}
+  deleteNode = (index: number) => {}
 
   insertNodeAtStart(data: any) {}
 
