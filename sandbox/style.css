@@ -1,0 +1,47 @@
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+section {
+  height: inherit;
+}
+.parentDiv {
+  display: flex;
+  flex-direction: column;
+}
+.elTitle {
+  animation-duration: 1s;
+  animation-name: slidein;
+  animation-fill-mode: forwards 
+}
+@keyframes slidein {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.elSubtitle {
+  opacity: 0;
+  padding-top: 20px;
+  animation-name: fadein;
+  animation-duration: 1s;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+}
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.interactiveText:hover {
+  cursor: pointer;
+  color: green;
+}
