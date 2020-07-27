@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint src/ --ext .ts --max-warnings=0",
     "start": "tsc --build tsconfig.json --watch",
-    "build": "tsc --build tsconfig.json",
+    "build": "tsc --build tsconfig.json && cp sandbox/index.html dist/ && cp sandbox/style.css dist/",
     "test": "jest"
   },
   "repository": {
