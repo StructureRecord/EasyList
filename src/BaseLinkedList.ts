@@ -39,7 +39,7 @@ export default class BaseLinkedList {
     }
   }
 
-  clearNodeList() {
+  clearNodeList(): void {
     this.headNode = null;
   }
 
