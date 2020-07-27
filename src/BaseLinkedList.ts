@@ -4,7 +4,7 @@ export default class BaseLinkedList {
     this.headNode = headNode;
   }
 
-  get firstNode() {
+  get firstNode(): any {
     return this.headNode;
   }
 
