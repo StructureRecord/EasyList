@@ -1,4 +1,4 @@
-import BaseLinkedList from "./BaseLinkedList";
+import BaseLinkedList from './BaseLinkedList';
 
 class LinkedListNode {
   data: any;
@@ -24,7 +24,7 @@ export default class DoublyLinkedList extends BaseLinkedList {
       this.headNode = newNode;
       this.tailNode = newNode;
     } else {
-      let nextNode = this.headNode;
+      const nextNode = this.headNode;
       this.headNode = new LinkedListNode(null, data, nextNode);
       nextNode.previous = this.headNode;
     }
@@ -54,7 +54,7 @@ export default class DoublyLinkedList extends BaseLinkedList {
       return this.insertNodeAtEnd(data);
     }
     const previousNode = this.getNodeElement(index - 1);
-    let newNode = new LinkedListNode(previousNode, data, indexNode);
+    const newNode = new LinkedListNode(previousNode, data, indexNode);
     previousNode.next = newNode;
     indexNode.previous = newNode;
 
@@ -102,7 +102,7 @@ export default class DoublyLinkedList extends BaseLinkedList {
       }
     }
     if ((index && this.listSize) === 1) {
-      console.log("No element present at index position 1");
+      console.log('No element present at index position 1');
       return;
     }
     const indexNode = this.getNodeElement(index);

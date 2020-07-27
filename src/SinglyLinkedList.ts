@@ -3,19 +3,19 @@ import BaseLinkedList from './BaseLinkedList';
 class LinkListNode {
   data: any;
   next: any;
-  constructor (data: any, next: any) {
+  constructor(data: any, next: any) {
     this.data = data;
     this.next = next;
   }
 }
 
-export default class SinglyLinkList extends BaseLinkedList{
+export default class SinglyLinkedList extends BaseLinkedList {
   constructor() {
     super();
   }
-  
+
   insertNodeAtStart(data: any) {
-    let newNode = new LinkListNode(data, null);
+    const newNode = new LinkListNode(data, null);
     if (!this.listSize) {
       this.headNode = newNode;
     } else {
@@ -25,12 +25,12 @@ export default class SinglyLinkList extends BaseLinkedList{
   }
 
   insertNodeAtEnd(data: any) {
-    let insertionNode = new LinkListNode(data, null);
-    if(this.headNode === null) {
+    const insertionNode = new LinkListNode(data, null);
+    if (this.headNode === null) {
       this.headNode = insertionNode;
       return this.headNode;
     }
-    
+
     this.lastNode.next = insertionNode;
     return this.headNode;
   }
@@ -47,9 +47,9 @@ export default class SinglyLinkList extends BaseLinkedList{
       return this.insertNodeAtEnd(data);
     }
     const previousNode = this.getNodeElement(index - 1);
-    let newNode = new LinkListNode(data, null);
+    const newNode = new LinkListNode(data, null);
     newNode.next = previousNode.next;
-    previousNode.next = newNode;       
+    previousNode.next = newNode;
 
     return this.headNode;
   }
@@ -70,7 +70,7 @@ export default class SinglyLinkList extends BaseLinkedList{
       this.clearNodeList();
       return;
     }
-    let previousNode = this.getNodeElement(this.listSize - 2);
+    const previousNode = this.getNodeElement(this.listSize - 2);
     previousNode.next = null;
     return this.headNode;
   }
@@ -90,7 +90,7 @@ export default class SinglyLinkList extends BaseLinkedList{
       }
     }
     if ((index && this.listSize) === 1) {
-      console.log("No element present at index position 1");
+      console.log('No element present at index position 1');
       return;
     }
     const indexNode = this.getNodeElement(index);
@@ -98,7 +98,7 @@ export default class SinglyLinkList extends BaseLinkedList{
       this.deleteLastNode();
       return;
     }
-    let previousNode = this.getNodeElement(index - 1);
+    const previousNode = this.getNodeElement(index - 1);
     previousNode.next = previousNode.next.next;
     return this.headNode;
   }

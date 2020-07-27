@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/no-empty-function */
 export default class BaseLinkedList {
   headNode: any;
   constructor(headNode = null) {
@@ -17,7 +19,7 @@ export default class BaseLinkedList {
 
   get listSize() {
     let currentHead = this.headNode;
-    let count: number = 0;
+    let count = 0;
     while (currentHead) {
       currentHead = currentHead.next;
       count++;
@@ -28,10 +30,10 @@ export default class BaseLinkedList {
   checkIndex(index: number) {
     try {
       if (index < 0) {
-        throw "Index should not be less than 0";
+        throw 'Index should not be less than 0';
       }
       if (index > this.listSize) {
-        throw "Index value is greater than linked list list size";
+        throw 'Index value is greater than linked list list size';
       }
     } catch (err) {
       console.log(err);
@@ -46,7 +48,7 @@ export default class BaseLinkedList {
   getNodeElement(index: number) {
     this.checkIndex(index);
     let currentHead = this.headNode;
-    let count: number = 0;
+    let count = 0;
     while (currentHead) {
       if (count === index) {
         return currentHead;
