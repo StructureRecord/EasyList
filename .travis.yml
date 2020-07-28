@@ -1,11 +1,9 @@
 language: node_js
 
-os: osx
+os: linux
 
-script:
-  'npm run build'
-  'npm run lint'
-
+script: npm run build && npm run lint
+ 
 deploy:
   provider: pages
   local_dir: dist
@@ -13,4 +11,4 @@ deploy:
   github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
   keep_history: true
   on:
-   branch: sandbox-setup
+    branch: master
