@@ -4,7 +4,7 @@ os: linux
 
 script: npm run build && npm run lint
  
- deploy:
+deploy:
   provider: pages
   local_dir: dist
   skip_cleanup: true
