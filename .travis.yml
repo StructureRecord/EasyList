@@ -2,20 +2,15 @@ language: node_js
 
 os: linux
 
-jobs:
-  exclude:
-    - name: Running tests
-      script: npm run test
-  include:
-    - name: Building the code 
-      script: npm run build
-    - name: Linting
-      script: npm run lint  
-    - deploy:
-        provider: pages
-        local_dir: dist
-        skip_cleanup: true
-        github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-        keep_history: true
-        on:
-          branch: master
+script:
+  - npm run build
+  - npm run lint
+ 
+ deploy:
+  provider: pages
+  local_dir: dist
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  on:
+    branch: master
