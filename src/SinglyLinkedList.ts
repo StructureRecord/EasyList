@@ -1,31 +1,22 @@
 import BaseLinkedList from './BaseLinkedList';
-
-class LinkListNode {
-  data: any;
-  next: any;
-  constructor(data: any, next: any) {
-    this.data = data;
-    this.next = next;
-  }
-}
-
+import LinkedListNode from './SinglyListNode';
 export default class SinglyLinkedList extends BaseLinkedList {
   constructor() {
     super();
   }
 
   insertNodeAtStart(data: any) {
-    const newNode = new LinkListNode(data, null);
+    const newNode = new LinkedListNode(data, null);
     if (!this.listSize) {
       this.headNode = newNode;
     } else {
-      this.headNode = new LinkListNode(data, this.headNode);
+      this.headNode = new LinkedListNode(data, this.headNode);
     }
     return this.headNode;
   }
 
   insertNodeAtEnd(data: any) {
-    const insertionNode = new LinkListNode(data, null);
+    const insertionNode = new LinkedListNode(data, null);
     if (this.headNode === null) {
       this.headNode = insertionNode;
       return this.headNode;
@@ -47,7 +38,7 @@ export default class SinglyLinkedList extends BaseLinkedList {
       return this.insertNodeAtEnd(data);
     }
     const previousNode = this.getNodeElement(index - 1);
-    const newNode = new LinkListNode(data, null);
+    const newNode = new LinkedListNode(data, null);
     newNode.next = previousNode.next;
     previousNode.next = newNode;
 

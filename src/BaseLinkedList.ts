@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable @typescript-eslint/no-empty-function */
 export default class BaseLinkedList {
   headNode: any;
   constructor(headNode = null) {
@@ -39,6 +37,7 @@ export default class BaseLinkedList {
       console.log(err);
       return true;
     }
+    return false;
   }
 
   clearNodeList(): void {
@@ -58,11 +57,6 @@ export default class BaseLinkedList {
     }
     return null;
   }
-
-  insertNode = (data: any, index: number) => {}
-
-  deleteNode = (index: number) => {}
-
   insertNodeAtStart(data: any) {}
 
   insertNodeAtEnd(data: any) {}

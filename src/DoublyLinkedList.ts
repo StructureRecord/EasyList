@@ -1,15 +1,5 @@
 import BaseLinkedList from './BaseLinkedList';
-
-class LinkedListNode {
-  data: any;
-  next: any;
-  previous: any;
-  constructor(previous: any, data: any, next: any) {
-    this.data = data;
-    this.next = next;
-    this.previous = previous;
-  }
-}
+import LinkedListNode from './DoublyListNode';
 
 export default class DoublyLinkedList extends BaseLinkedList {
   tailNode: any;
