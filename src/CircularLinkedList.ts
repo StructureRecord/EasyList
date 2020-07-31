@@ -1,12 +1,12 @@
 import BaseLinkedList from './BaseLinkedList';
-import LinkedListNode from './SinglyListNode';
+import LinkedListNode from './LinkedListNode';
 export default class CircularLinkedList extends BaseLinkedList {
   constructor() {
     super();
   }
 
   insertNodeAtStart(data: any) {
-    const newNode = new LinkedListNode(data, null);
+    const newNode = new LinkedListNode({data: data, next: null}, 'circularList');
     if (!this.listSize) {
       this.headNode = newNode;
       this.headNode.next = this.headNode;
@@ -19,7 +19,7 @@ export default class CircularLinkedList extends BaseLinkedList {
   }
 
   insertNodeAtEnd(data: any) {
-    const insertionNode = new LinkedListNode(data, null);
+    const insertionNode = new LinkedListNode({data: data, next: null}, 'circularList');
     if (!this.listSize) {
       this.insertNodeAtStart(data);
       return;
@@ -41,7 +41,7 @@ export default class CircularLinkedList extends BaseLinkedList {
       return this.insertNodeAtEnd(data);
     }
     const previousNode = this.getNodeElement(index - 1);
-    const newNode = new LinkedListNode(data, null);
+    const newNode = new LinkedListNode({data: data, next: null}, 'circularList');
     newNode.next = previousNode.next;
     previousNode.next = newNode;
 

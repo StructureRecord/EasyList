@@ -10,7 +10,7 @@ export default class BaseLinkedList {
 
   get lastNode() {
     if (!this.listSize) {
-      return;
+      return null;
     }
     return this.getNodeElement(this.listSize - 1);
   }
