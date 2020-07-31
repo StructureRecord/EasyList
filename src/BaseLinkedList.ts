@@ -21,6 +21,10 @@ export default class BaseLinkedList {
     while (currentHead) {
       currentHead = currentHead.next;
       count++;
+      // for circular linked list
+      if (currentHead === this.headNode) {
+        break;
+      }
     }
     return count;
   }

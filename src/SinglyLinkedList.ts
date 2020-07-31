@@ -30,11 +30,10 @@ export default class SinglyLinkedList extends BaseLinkedList {
     if (this.checkIndex(index)) {
       return;
     }
-    const indexNode = this.getNodeElement(index);
     if (index === 0) {
       return this.insertNodeAtStart(data);
     }
-    if (indexNode === this.lastNode) {
+    if (index === this.listSize - 1) {
       return this.insertNodeAtEnd(data);
     }
     const previousNode = this.getNodeElement(index - 1);
@@ -47,6 +46,10 @@ export default class SinglyLinkedList extends BaseLinkedList {
 
   deleteFirstNode() {
     if (!this.firstNode) {
+      return;
+    }
+    if (this.listSize === 1) {
+      this.clearNodeList();
       return;
     }
     this.headNode = this.headNode.next;
@@ -67,18 +70,11 @@ export default class SinglyLinkedList extends BaseLinkedList {
   }
 
   deleteNodeAtIndex(index: number) {
-    if (!this.listSize) {
-      return;
-    }
     if (this.checkIndex(index)) {
       return;
     }
     if (index === 0) {
-      if (!this.firstNode.next) {
-        return this.clearNodeList();
-      } else {
-        return this.deleteFirstNode();
-      }
+      return this.deleteFirstNode();
     }
     if ((index && this.listSize) === 1) {
       console.log('No element present at index position 1');

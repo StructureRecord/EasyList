@@ -1,34 +1,32 @@
 import BaseLinkedList from './BaseLinkedList';
-import LinkedListNode from './DoublyListNode';
-
-export default class DoublyLinkedList extends BaseLinkedList {
-  tailNode: any;
+import LinkedListNode from './SinglyListNode';
+export default class CircularLinkedList extends BaseLinkedList {
   constructor() {
     super();
-    this.tailNode = null;
   }
 
   insertNodeAtStart(data: any) {
-    const newNode = new LinkedListNode(null, data, null);
-    if (!this.firstNode) {
+    const newNode = new LinkedListNode(data, null);
+    if (!this.listSize) {
       this.headNode = newNode;
-      this.tailNode = newNode;
+      this.headNode.next = this.headNode;
     } else {
-      const nextNode = this.headNode;
-      this.headNode = new LinkedListNode(null, data, nextNode);
-      nextNode.previous = this.headNode;
+      newNode.next = this.headNode;
+      this.lastNode.next = newNode;
+      this.headNode = newNode;
     }
     return this.headNode;
   }
 
   insertNodeAtEnd(data: any) {
-    if (!this.firstNode) {
-      return this.insertNodeAtStart(data);
-    } else {
-      const newNode = new LinkedListNode(this.tailNode, data, null);
-      this.tailNode.next = newNode;
-      this.tailNode = newNode;
+    const insertionNode = new LinkedListNode(data, null);
+    if (!this.listSize) {
+      this.insertNodeAtStart(data);
+      return;
     }
+
+    insertionNode.next = this.headNode;
+    this.lastNode.next = insertionNode;
     return this.headNode;
   }
 
@@ -36,17 +34,16 @@ export default class DoublyLinkedList extends BaseLinkedList {
     if (this.checkIndex(index)) {
       return;
     }
-    const indexNode = this.getNodeElement(index);
     if (index === 0) {
       return this.insertNodeAtStart(data);
     }
-    if (indexNode === this.lastNode) {
+    if (index === this.listSize - 1) {
       return this.insertNodeAtEnd(data);
     }
     const previousNode = this.getNodeElement(index - 1);
-    const newNode = new LinkedListNode(previousNode, data, indexNode);
+    const newNode = new LinkedListNode(data, null);
+    newNode.next = previousNode.next;
     previousNode.next = newNode;
-    indexNode.previous = newNode;
 
     return this.headNode;
   }
@@ -55,12 +52,12 @@ export default class DoublyLinkedList extends BaseLinkedList {
     if (!this.firstNode) {
       return;
     }
-    if (!this.firstNode.next) {
+    if (this.listSize === 1) {
       this.clearNodeList();
       return;
     }
+    this.lastNode.next = this.headNode.next;
     this.headNode = this.headNode.next;
-    this.headNode.previous = null;
     return this.headNode;
   }
 
@@ -68,12 +65,12 @@ export default class DoublyLinkedList extends BaseLinkedList {
     if (!this.lastNode) {
       return;
     }
-    if (!this.firstNode.next) {
+    if (this.listSize === 1) {
       this.clearNodeList();
       return;
     }
-    this.tailNode = this.tailNode.previous;
-    this.tailNode.next = null;
+    const previousNode = this.getNodeElement(this.listSize - 2);
+    previousNode.next = this.headNode;
     return this.headNode;
   }
 
@@ -93,8 +90,8 @@ export default class DoublyLinkedList extends BaseLinkedList {
       this.deleteLastNode();
       return;
     }
-    indexNode.previous.next = indexNode.next;
-    indexNode.next.previous = indexNode.previous;
+    const previousNode = this.getNodeElement(index - 1);
+    previousNode.next = previousNode.next.next;
     return this.headNode;
   }
 }
