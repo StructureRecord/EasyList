@@ -4,7 +4,7 @@ export default class LinkedListNode {
   previous: any;
   constructor(obj: any, type: string) {
     const {data, next, previous} = obj;
-    if (type === 'doublyList') {
+    if (type === 'doubly') {
       this.previous = previous;
     }
     this.data = data;

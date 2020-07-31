@@ -9,13 +9,13 @@ export default class DoublyLinkedList extends BaseLinkedList {
   }
 
   insertNodeAtStart(data: any) {
-    const newNode = new LinkedListNode({previous: null, data: data, next: null}, 'doublyList' );
+    const newNode = new LinkedListNode({previous: null, data: data, next: null}, 'doubly' );
     if (!this.firstNode) {
       this.headNode = newNode;
       this.tailNode = newNode;
     } else {
       const nextNode = this.headNode;
-      this.headNode = new LinkedListNode({previous: null, data: data, next: nextNode}, 'doublyList' );
+      this.headNode = new LinkedListNode({previous: null, data: data, next: nextNode}, 'doubly' );
       nextNode.previous = this.headNode;
     }
     return this.headNode;
@@ -25,7 +25,7 @@ export default class DoublyLinkedList extends BaseLinkedList {
     if (!this.firstNode) {
       return this.insertNodeAtStart(data);
     } else {
-      const newNode = new LinkedListNode({previous: this.tailNode, data: data, next: null}, 'doublyList' );
+      const newNode = new LinkedListNode({previous: this.tailNode, data: data, next: null}, 'doubly' );
       this.tailNode.next = newNode;
       this.tailNode = newNode;
     }
@@ -44,7 +44,7 @@ export default class DoublyLinkedList extends BaseLinkedList {
       return this.insertNodeAtEnd(data);
     }
     const previousNode = this.getNodeElement(index - 1);
-    const newNode = new LinkedListNode({previous: previousNode, data: data, next: indexNode}, 'doublyList' );
+    const newNode = new LinkedListNode({previous: previousNode, data: data, next: indexNode}, 'doubly' );
     previousNode.next = newNode;
     indexNode.previous = newNode;
 
