@@ -1,4 +1,4 @@
-export default class LinkedListNode {
+export default class Node {
   data: any;
   next: any;
   previous: any;

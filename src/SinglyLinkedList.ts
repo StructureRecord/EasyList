@@ -1,22 +1,22 @@
 import BaseLinkedList from './BaseLinkedList';
-import LinkedListNode from './LinkedListNode';
+import Node from './LinkedListNode';
 export default class SinglyLinkedList extends BaseLinkedList {
   constructor() {
     super();
   }
 
   insertNodeAtStart(data: any) {
-    const newNode = new LinkedListNode({data: data, next: null}, 'singly');
+    const newNode = new Node({data: data, next: null}, 'singly');
     if (!this.listSize) {
       this.headNode = newNode;
     } else {
-      this.headNode = new LinkedListNode(data, this.headNode);
+      this.headNode = new Node(data, this.headNode);
     }
     return this.headNode;
   }
 
   insertNodeAtEnd(data: any) {
-    const insertionNode = new LinkedListNode({data: data, next: null}, 'singly');
+    const insertionNode = new Node({data: data, next: null}, 'singly');
     if (this.headNode === null) {
       this.headNode = insertionNode;
       return this.headNode;
@@ -37,7 +37,7 @@ export default class SinglyLinkedList extends BaseLinkedList {
       return this.insertNodeAtEnd(data);
     }
     const previousNode = this.getNodeElement(index - 1);
-    const newNode = new LinkedListNode({data: data, next: null}, 'singly');
+    const newNode = new Node({data: data, next: null}, 'singly');
     newNode.next = previousNode.next;
     previousNode.next = newNode;
 
