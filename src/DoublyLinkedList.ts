@@ -8,7 +8,7 @@ export default class DoublyLinkedList extends BaseLinkedList {
     this.tailNode = null;
   }
 
-  insertNodeAtStart(data: any) {
+  insertNodeAtStart(data: any): boolean {
     const newNode = new Node({previous: null, data: data, next: null}, 'doubly' );
     if (!this.firstNode) {
       this.headNode = newNode;
@@ -18,10 +18,10 @@ export default class DoublyLinkedList extends BaseLinkedList {
       this.headNode = new Node({previous: null, data: data, next: nextNode}, 'doubly' );
       nextNode.previous = this.headNode;
     }
-    return this.headNode;
+    return true;
   }
 
-  insertNodeAtEnd(data: any) {
+  insertNodeAtEnd(data: any): boolean {
     if (!this.firstNode) {
       return this.insertNodeAtStart(data);
     } else {
@@ -29,12 +29,12 @@ export default class DoublyLinkedList extends BaseLinkedList {
       this.tailNode.next = newNode;
       this.tailNode = newNode;
     }
-    return this.headNode;
+    return true;
   }
 
-  insertNodeAtIndex(data: any, index: number) {
+  insertNodeAtIndex(data: any, index: number): boolean {
     if (this.checkIndex(index)) {
-      return;
+      return false;
     }
     const indexNode = this.getNodeElement(index);
     if (index === 0) {
@@ -48,53 +48,52 @@ export default class DoublyLinkedList extends BaseLinkedList {
     previousNode.next = newNode;
     indexNode.previous = newNode;
 
-    return this.headNode;
+    return true;
   }
 
-  deleteFirstNode() {
+  deleteFirstNode(): boolean {
     if (!this.firstNode) {
-      return;
+      return false;
     }
     if (!this.firstNode.next) {
       this.clearNodeList();
-      return;
+      return false;
     }
     this.headNode = this.headNode.next;
     this.headNode.previous = null;
-    return this.headNode;
+    return true;
   }
 
-  deleteLastNode() {
+  deleteLastNode(): boolean {
     if (!this.lastNode) {
-      return;
+      return false;
     }
     if (!this.firstNode.next) {
       this.clearNodeList();
-      return;
+      return false;
     }
     this.tailNode = this.tailNode.previous;
     this.tailNode.next = null;
-    return this.headNode;
+    return true;
   }
 
-  deleteNodeAtIndex(index: number) {
+  deleteNodeAtIndex(index: number): boolean {
     if (this.checkIndex(index)) {
-      return;
+      return false;
     }
     if (index === 0) {
       return this.deleteFirstNode();
     }
     if ((index && this.listSize) === 1) {
       console.log('No element present at index position 1');
-      return;
+      return false;
     }
     const indexNode = this.getNodeElement(index);
     if (indexNode === this.lastNode) {
-      this.deleteLastNode();
-      return;
+      return this.deleteLastNode();
     }
     indexNode.previous.next = indexNode.next;
     indexNode.next.previous = indexNode.previous;
-    return this.headNode;
+    return true;
   }
 }

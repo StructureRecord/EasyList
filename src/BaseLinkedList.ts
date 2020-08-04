@@ -63,15 +63,26 @@ export default class BaseLinkedList {
     return null;
   }
 
-  insertNodeAtStart(data: any) {}
+  insertNodeAtStart(data: any): boolean {
+    return true;
+  }
 
-  insertNodeAtEnd(data: any) {}
+  insertNodeAtEnd(data: any): boolean {
+    return true;
+  }
+  insertNodeAtIndex(data: any, index: number): boolean {
+    return true;
+  }
 
-  insertNodeAtIndex(data: any, index: number) {}
+  deleteFirstNode(): boolean {
+    return true;
+  }
 
-  deleteFirstNode() {}
+  deleteLastNode(): boolean {
+    return true;
+  }
 
-  deleteLastNode() {}
-
-  deleteNodeAtIndex(index: number) {}
+  deleteNodeAtIndex(index: number): boolean {
+    return true;
+  }
 }
