@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 export default class BaseLinkedList {
   headNode: any;
   constructor(headNode = null) {
@@ -61,6 +62,7 @@ export default class BaseLinkedList {
     }
     return null;
   }
+
   insertNodeAtStart(data: any) {}
 
   insertNodeAtEnd(data: any) {}

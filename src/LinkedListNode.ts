@@ -1,4 +1,5 @@
 export default class Node {
+  // data: Record<'a', string> = {a: 'string'};
   data: any;
   next: any;
   previous: any;
