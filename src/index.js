@@ -1,4 +1,8 @@
-export default function helloWorld() {
-    return 'HelloWorld';
-}
-//# sourceMappingURL=index.js.map
+import SinglyLinkedList from './SinglyLinkedList';
+import DoublyLinkedList from './DoublyLinkedList';
+import CircularLinkedList from './CircularLinkedList';
+export default {
+    SinglyLinkedList: SinglyLinkedList,
+    DoublyLinkedList: DoublyLinkedList,
+    CircularLinkedList: CircularLinkedList
+};
