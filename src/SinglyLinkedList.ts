@@ -6,24 +6,24 @@ export default class SinglyLinkedList extends BaseLinkedList {
   }
 
   insertNodeAtStart(data: T): boolean {
-    const newNode = new Node({data: data, next: null}, 'singly');
+    const newNode: Node<T> = new Node<T>({data: data, next: null}, 'singly');
     if (!this.listSize) {
       this.headNode = newNode;
     } else {
-      this.headNode = new Node(data, this.headNode);
+      this.headNode = new Node<T>({data: data, next: this.headNode}, 'singly');
     }
     return true;
   }
 
   insertNodeAtEnd(data: T): boolean {
-    const insertionNode = new Node({data: data, next: null}, 'singly');
+    const insertionNode: Node<T> = new Node<T>({data: data, next: null}, 'singly');
     if (this.headNode === null) {
       this.headNode = insertionNode;
-      return this.headNode;
+      return true;
     }
 
     this.lastNode.next = insertionNode;
-    return this.headNode;
+    return true;
   }
 
   insertNodeAtIndex(data: T, index: number): boolean {
@@ -37,7 +37,7 @@ export default class SinglyLinkedList extends BaseLinkedList {
       return this.insertNodeAtEnd(data);
     }
     const previousNode = this.getNodeElement(index - 1);
-    const newNode = new Node({data: data, next: null}, 'singly');
+    const newNode: Node<T> = new Node<T>({data: data, next: null}, 'singly');
     newNode.next = previousNode.next;
     previousNode.next = newNode;
 
@@ -52,7 +52,7 @@ export default class SinglyLinkedList extends BaseLinkedList {
       this.clearNodeList();
       return false;
     }
-    this.headNode = this.headNode.next;
+    this.headNode = this.headNode && this.headNode.next;
     return true;
   }
 
@@ -66,7 +66,7 @@ export default class SinglyLinkedList extends BaseLinkedList {
     }
     const previousNode = this.getNodeElement(this.listSize - 2);
     previousNode.next = null;
-    return this.headNode;
+    return true;
   }
 
   deleteNodeAtIndex(index: number): boolean {

@@ -6,7 +6,7 @@ export default class CircularLinkedList extends BaseLinkedList {
   }
 
   insertNodeAtStart(data: T): boolean {
-    const newNode = new Node({data: data, next: null}, 'singly');
+    const newNode: Node<T> = new Node<T>({data: data, next: null}, 'singly');
     if (!this.listSize) {
       this.headNode = newNode;
       this.headNode.next = this.headNode;
@@ -19,7 +19,7 @@ export default class CircularLinkedList extends BaseLinkedList {
   }
 
   insertNodeAtEnd(data: T): boolean {
-    const insertionNode = new Node({data: data, next: null}, 'singly');
+    const insertionNode: Node<T> = new Node<T>({data: data, next: null}, 'singly');
     if (!this.listSize) {
       return this.insertNodeAtStart(data);
     }
@@ -40,7 +40,7 @@ export default class CircularLinkedList extends BaseLinkedList {
       return this.insertNodeAtEnd(data);
     }
     const previousNode = this.getNodeElement(index - 1);
-    const newNode = new Node({data: data, next: null}, 'singly');
+    const newNode: Node<T> = new Node<T>({data: data, next: null}, 'singly');
     newNode.next = previousNode.next;
     previousNode.next = newNode;
 
@@ -55,8 +55,10 @@ export default class CircularLinkedList extends BaseLinkedList {
       this.clearNodeList();
       return true;
     }
-    this.lastNode.next = this.headNode.next;
-    this.headNode = this.headNode.next;
+    if (this.headNode) {
+      this.lastNode.next = this.headNode.next;
+      this.headNode = this.headNode.next;
+    }
     return true;
   }
 
