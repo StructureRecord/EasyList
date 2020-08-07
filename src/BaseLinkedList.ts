@@ -1,22 +1,22 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
+import Node from './LinkedListNode';
 export default class BaseLinkedList {
-  headNode: any;
+  headNode: Node<T> | null;
   constructor(headNode = null) {
     this.headNode = headNode;
   }
 
-  get firstNode(): any {
+  get firstNode(): T {
     return this.headNode;
   }
 
-  get lastNode() {
+  get lastNode(): T {
     if (!this.listSize) {
       return null;
     }
     return this.getNodeElement(this.listSize - 1);
   }
 
-  get listSize() {
+  get listSize(): number {
     let currentHead = this.headNode;
     let count = 0;
     while (currentHead) {
@@ -30,7 +30,7 @@ export default class BaseLinkedList {
     return count;
   }
 
-  checkIndex(index: number) {
+  checkIndex(index: number): boolean {
     try {
       if (index < 0) {
         throw 'Index should not be less than 0';
@@ -49,7 +49,7 @@ export default class BaseLinkedList {
     this.headNode = null;
   }
 
-  getNodeElement(index: number) {
+  getNodeElement(index: number): T {
     this.checkIndex(index);
     let currentHead = this.headNode;
     let count = 0;
@@ -63,26 +63,26 @@ export default class BaseLinkedList {
     return null;
   }
 
-  insertNodeAtStart(data: any): boolean {
-    return true;
-  }
+  // insertNodeAtStart(data: any): boolean {
+  //   return true;
+  // }
 
-  insertNodeAtEnd(data: any): boolean {
-    return true;
-  }
-  insertNodeAtIndex(data: any, index: number): boolean {
-    return true;
-  }
+  // insertNodeAtEnd(data: any): boolean {
+  //   return true;
+  // }
+  // insertNodeAtIndex(data: any, index: number): boolean {
+  //   return true;
+  // }
 
-  deleteFirstNode(): boolean {
-    return true;
-  }
+  // deleteFirstNode(): boolean {
+  //   return true;
+  // }
 
-  deleteLastNode(): boolean {
-    return true;
-  }
+  // deleteLastNode(): boolean {
+  //   return true;
+  // }
 
-  deleteNodeAtIndex(index: number): boolean {
-    return true;
-  }
+  // deleteNodeAtIndex(index: number): boolean {
+  //   return true;
+  // }
 }

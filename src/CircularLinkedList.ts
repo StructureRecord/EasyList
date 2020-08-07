@@ -5,7 +5,7 @@ export default class CircularLinkedList extends BaseLinkedList {
     super();
   }
 
-  insertNodeAtStart(data: any): boolean {
+  insertNodeAtStart(data: T): boolean {
     const newNode = new Node({data: data, next: null}, 'singly');
     if (!this.listSize) {
       this.headNode = newNode;
@@ -18,7 +18,7 @@ export default class CircularLinkedList extends BaseLinkedList {
     return true;
   }
 
-  insertNodeAtEnd(data: any): boolean {
+  insertNodeAtEnd(data: T): boolean {
     const insertionNode = new Node({data: data, next: null}, 'singly');
     if (!this.listSize) {
       return this.insertNodeAtStart(data);
@@ -29,7 +29,7 @@ export default class CircularLinkedList extends BaseLinkedList {
     return true;
   }
 
-  insertNodeAtIndex(data: any, index: number): boolean {
+  insertNodeAtIndex(data: T, index: number): boolean {
     if (this.checkIndex(index)) {
       return false;
     }

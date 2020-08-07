@@ -1,9 +1,8 @@
-export default class Node {
-  // data: Record<'a', string> = {a: 'string'};
-  data: any;
-  next: any;
-  previous: any;
-  constructor(obj: any, type: string) {
+export default class Node<T> {
+  data: T;
+  next: Node<T>;
+  previous?: Node<T>;
+  constructor(obj: Node<T>, type: string) {
     const {data, next, previous} = obj;
     if (type === 'doubly') {
       this.previous = previous;

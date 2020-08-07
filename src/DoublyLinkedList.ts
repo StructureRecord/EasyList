@@ -2,13 +2,13 @@ import BaseLinkedList from './BaseLinkedList';
 import Node from './LinkedListNode';
 
 export default class DoublyLinkedList extends BaseLinkedList {
-  tailNode: any;
+  tailNode: Node<T> | null;
   constructor() {
     super();
     this.tailNode = null;
   }
 
-  insertNodeAtStart(data: any): boolean {
+  insertNodeAtStart(data: T): boolean {
     const newNode = new Node({previous: null, data: data, next: null}, 'doubly' );
     if (!this.firstNode) {
       this.headNode = newNode;
@@ -21,7 +21,7 @@ export default class DoublyLinkedList extends BaseLinkedList {
     return true;
   }
 
-  insertNodeAtEnd(data: any): boolean {
+  insertNodeAtEnd(data: T): boolean {
     if (!this.firstNode) {
       return this.insertNodeAtStart(data);
     } else {
@@ -32,7 +32,7 @@ export default class DoublyLinkedList extends BaseLinkedList {
     return true;
   }
 
-  insertNodeAtIndex(data: any, index: number): boolean {
+  insertNodeAtIndex(data: T, index: number): boolean {
     if (this.checkIndex(index)) {
       return false;
     }

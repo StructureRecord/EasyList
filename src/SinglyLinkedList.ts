@@ -5,7 +5,7 @@ export default class SinglyLinkedList extends BaseLinkedList {
     super();
   }
 
-  insertNodeAtStart(data: any): boolean {
+  insertNodeAtStart(data: T): boolean {
     const newNode = new Node({data: data, next: null}, 'singly');
     if (!this.listSize) {
       this.headNode = newNode;
@@ -15,7 +15,7 @@ export default class SinglyLinkedList extends BaseLinkedList {
     return true;
   }
 
-  insertNodeAtEnd(data: any): boolean {
+  insertNodeAtEnd(data: T): boolean {
     const insertionNode = new Node({data: data, next: null}, 'singly');
     if (this.headNode === null) {
       this.headNode = insertionNode;
@@ -26,7 +26,7 @@ export default class SinglyLinkedList extends BaseLinkedList {
     return this.headNode;
   }
 
-  insertNodeAtIndex(data: any, index: number): boolean {
+  insertNodeAtIndex(data: T, index: number): boolean {
     if (this.checkIndex(index)) {
       return false;
     }
