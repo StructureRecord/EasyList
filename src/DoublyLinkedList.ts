@@ -1,21 +1,21 @@
 import BaseLinkedList from './BaseLinkedList';
 import Node from './LinkedListNode';
 
-export default class DoublyLinkedList extends BaseLinkedList {
-  tailNode: Node<T> | null;
+export default class DoublyLinkedList<T> extends BaseLinkedList<T> {
+  tailNode: Node<T>;
   constructor() {
     super();
     this.tailNode = null;
   }
 
   insertNodeAtStart(data: T): boolean {
-    const newNode: Node<T> = new Node<T>({previous: null, data: data, next: null}, 'doubly' );
+    const newNode: Node<T> = new Node<T>({previous: undefined, data: data, next: undefined}, 'doubly');
     if (!this.firstNode) {
       this.headNode = newNode;
       this.tailNode = newNode;
     } else {
       const nextNode = this.headNode;
-      this.headNode = new Node<T>({previous: null, data: data, next: nextNode}, 'doubly' );
+      this.headNode = new Node<T>({previous: undefined, data: data, next: nextNode}, 'doubly' );
       nextNode.previous = this.headNode;
     }
     return true;

@@ -1,8 +1,8 @@
 import Node from './LinkedListNode';
-export default class BaseLinkedList {
-  headNode: Node<T> | null;
-  constructor(headNode = null) {
-    this.headNode = headNode;
+export default class BaseLinkedList<T> {
+  headNode: Node<T>;
+  constructor() {
+    this.headNode = null;
   }
 
   get firstNode(): T {

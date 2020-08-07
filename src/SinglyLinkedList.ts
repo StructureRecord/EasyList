@@ -1,12 +1,12 @@
 import BaseLinkedList from './BaseLinkedList';
 import Node from './LinkedListNode';
-export default class SinglyLinkedList extends BaseLinkedList {
+export default class SinglyLinkedList<T> extends BaseLinkedList<T> {
   constructor() {
     super();
   }
 
   insertNodeAtStart(data: T): boolean {
-    const newNode: Node<T> = new Node<T>({data: data, next: null}, 'singly');
+    const newNode: Node<T> = new Node<T>({data: data, next: undefined}, 'singly');
     if (!this.listSize) {
       this.headNode = newNode;
     } else {
@@ -16,7 +16,7 @@ export default class SinglyLinkedList extends BaseLinkedList {
   }
 
   insertNodeAtEnd(data: T): boolean {
-    const insertionNode: Node<T> = new Node<T>({data: data, next: null}, 'singly');
+    const insertionNode: Node<T> = new Node<T>({data: data, next: undefined}, 'singly');
     if (this.headNode === null) {
       this.headNode = insertionNode;
       return true;
@@ -37,7 +37,7 @@ export default class SinglyLinkedList extends BaseLinkedList {
       return this.insertNodeAtEnd(data);
     }
     const previousNode = this.getNodeElement(index - 1);
-    const newNode: Node<T> = new Node<T>({data: data, next: null}, 'singly');
+    const newNode: Node<T> = new Node<T>({data: data, next: undefined}, 'singly');
     newNode.next = previousNode.next;
     previousNode.next = newNode;
 
@@ -52,7 +52,7 @@ export default class SinglyLinkedList extends BaseLinkedList {
       this.clearNodeList();
       return false;
     }
-    this.headNode = this.headNode && this.headNode.next;
+    this.headNode = this.headNode.next;
     return true;
   }
 

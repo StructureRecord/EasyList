@@ -1,6 +1,6 @@
 import BaseLinkedList from './BaseLinkedList';
 import Node from './LinkedListNode';
-export default class CircularLinkedList extends BaseLinkedList {
+export default class CircularLinkedList<T> extends BaseLinkedList<T> {
   constructor() {
     super();
   }

@@ -1,6 +1,6 @@
 export default class Node<T> {
   data: T;
-  next: Node<T>;
+  next?: Node<T>;
   previous?: Node<T>;
   constructor(obj: Node<T>, type: string) {
     const {data, next, previous} = obj;
