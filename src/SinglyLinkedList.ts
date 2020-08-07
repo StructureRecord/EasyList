@@ -22,7 +22,7 @@ export default class SinglyLinkedList<T> extends BaseLinkedList<T> {
       return true;
     }
 
-    this.lastNode.next = insertionNode;
+    this.lastNode!.next = insertionNode;
     return true;
   }
 
@@ -38,8 +38,8 @@ export default class SinglyLinkedList<T> extends BaseLinkedList<T> {
     }
     const previousNode = this.getNodeElement(index - 1);
     const newNode: Node<T> = new Node<T>({data: data, next: undefined}, 'singly');
-    newNode.next = previousNode.next;
-    previousNode.next = newNode;
+    newNode.next = previousNode!.next;
+    previousNode!.next = newNode;
 
     return true;
   }
@@ -52,7 +52,7 @@ export default class SinglyLinkedList<T> extends BaseLinkedList<T> {
       this.clearNodeList();
       return false;
     }
-    this.headNode = this.headNode.next;
+    this.headNode = this.headNode!.next;
     return true;
   }
 
@@ -60,12 +60,12 @@ export default class SinglyLinkedList<T> extends BaseLinkedList<T> {
     if (!this.lastNode) {
       return false;
     }
-    if (!this.firstNode.next) {
+    if (!this.firstNode!.next) {
       this.clearNodeList();
       return true;
     }
     const previousNode = this.getNodeElement(this.listSize - 2);
-    previousNode.next = null;
+    previousNode!.next = null;
     return true;
   }
 
@@ -85,7 +85,7 @@ export default class SinglyLinkedList<T> extends BaseLinkedList<T> {
       return this.deleteLastNode();
     }
     const previousNode = this.getNodeElement(index - 1);
-    previousNode.next = previousNode.next.next;
+    previousNode!.next = previousNode!.next!.next;
     return true;
   }
 }

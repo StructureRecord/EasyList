@@ -2,7 +2,7 @@ import BaseLinkedList from './BaseLinkedList';
 import Node from './LinkedListNode';
 
 export default class DoublyLinkedList<T> extends BaseLinkedList<T> {
-  tailNode: Node<T>;
+  tailNode: Node<T> | null| undefined;
   constructor() {
     super();
     this.tailNode = null;
@@ -16,7 +16,7 @@ export default class DoublyLinkedList<T> extends BaseLinkedList<T> {
     } else {
       const nextNode = this.headNode;
       this.headNode = new Node<T>({previous: undefined, data: data, next: nextNode}, 'doubly' );
-      nextNode.previous = this.headNode;
+      nextNode!.previous = this.headNode;
     }
     return true;
   }
@@ -26,7 +26,7 @@ export default class DoublyLinkedList<T> extends BaseLinkedList<T> {
       return this.insertNodeAtStart(data);
     } else {
       const newNode: Node<T> = new Node<T>({previous: this.tailNode, data: data, next: null}, 'doubly' );
-      this.tailNode.next = newNode;
+      this.tailNode!.next = newNode;
       this.tailNode = newNode;
     }
     return true;
@@ -45,8 +45,8 @@ export default class DoublyLinkedList<T> extends BaseLinkedList<T> {
     }
     const previousNode = this.getNodeElement(index - 1);
     const newNode: Node<T> = new Node<T>({previous: previousNode, data: data, next: indexNode}, 'doubly' );
-    previousNode.next = newNode;
-    indexNode.previous = newNode;
+    previousNode!.next = newNode;
+    indexNode!.previous = newNode;
 
     return true;
   }
@@ -59,8 +59,8 @@ export default class DoublyLinkedList<T> extends BaseLinkedList<T> {
       this.clearNodeList();
       return false;
     }
-    this.headNode = this.headNode.next;
-    this.headNode.previous = null;
+    this.headNode = this.headNode!.next;
+    this.headNode!.previous = null;
     return true;
   }
 
@@ -68,12 +68,12 @@ export default class DoublyLinkedList<T> extends BaseLinkedList<T> {
     if (!this.lastNode) {
       return false;
     }
-    if (!this.firstNode.next) {
+    if (!this.firstNode!.next) {
       this.clearNodeList();
       return false;
     }
-    this.tailNode = this.tailNode.previous;
-    this.tailNode.next = null;
+    this.tailNode = this.tailNode!.previous;
+    this.tailNode!.next = null;
     return true;
   }
 
@@ -92,8 +92,8 @@ export default class DoublyLinkedList<T> extends BaseLinkedList<T> {
     if (indexNode === this.lastNode) {
       return this.deleteLastNode();
     }
-    indexNode.previous.next = indexNode.next;
-    indexNode.next.previous = indexNode.previous;
+    indexNode!.previous!.next = indexNode!.next;
+    indexNode!.next!.previous = indexNode!.previous;
     return true;
   }
 }

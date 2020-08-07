@@ -1,7 +1,7 @@
-export default class Node<T> {
+class Node<T> {
   data: T;
-  next?: Node<T>;
-  previous?: Node<T>;
+  next?: Node<T> | null;
+  previous?: Node<T> | null;
   constructor(obj: Node<T>, type: string) {
     const {data, next, previous} = obj;
     if (type === 'doubly') {
@@ -11,3 +11,5 @@ export default class Node<T> {
     this.next = next;
   }
 }
+
+export default Node;

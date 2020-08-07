@@ -1,15 +1,15 @@
 import Node from './LinkedListNode';
 export default class BaseLinkedList<T> {
-  headNode: Node<T>;
+  headNode: Node<T> | null | undefined;
   constructor() {
     this.headNode = null;
   }
 
-  get firstNode(): T {
+  get firstNode(): Node<T> | null | undefined {
     return this.headNode;
   }
 
-  get lastNode(): T {
+  get lastNode(): null | Node<T>  {
     if (!this.listSize) {
       return null;
     }
@@ -49,7 +49,7 @@ export default class BaseLinkedList<T> {
     this.headNode = null;
   }
 
-  getNodeElement(index: number): T {
+  getNodeElement(index: number): Node<T> | null {
     this.checkIndex(index);
     let currentHead = this.headNode;
     let count = 0;
@@ -63,26 +63,4 @@ export default class BaseLinkedList<T> {
     return null;
   }
 
-  // insertNodeAtStart(data: any): boolean {
-  //   return true;
-  // }
-
-  // insertNodeAtEnd(data: any): boolean {
-  //   return true;
-  // }
-  // insertNodeAtIndex(data: any, index: number): boolean {
-  //   return true;
-  // }
-
-  // deleteFirstNode(): boolean {
-  //   return true;
-  // }
-
-  // deleteLastNode(): boolean {
-  //   return true;
-  // }
-
-  // deleteNodeAtIndex(index: number): boolean {
-  //   return true;
-  // }
 }

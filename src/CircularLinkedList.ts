@@ -12,7 +12,7 @@ export default class CircularLinkedList<T> extends BaseLinkedList<T> {
       this.headNode.next = this.headNode;
     } else {
       newNode.next = this.headNode;
-      this.lastNode.next = newNode;
+      this.lastNode!.next = newNode;
       this.headNode = newNode;
     }
     return true;
@@ -25,7 +25,7 @@ export default class CircularLinkedList<T> extends BaseLinkedList<T> {
     }
 
     insertionNode.next = this.headNode;
-    this.lastNode.next = insertionNode;
+    this.lastNode!.next = insertionNode;
     return true;
   }
 
@@ -41,8 +41,8 @@ export default class CircularLinkedList<T> extends BaseLinkedList<T> {
     }
     const previousNode = this.getNodeElement(index - 1);
     const newNode: Node<T> = new Node<T>({data: data, next: null}, 'singly');
-    newNode.next = previousNode.next;
-    previousNode.next = newNode;
+    newNode.next = previousNode!.next;
+    previousNode!.next = newNode;
 
     return true;
   }
@@ -56,7 +56,7 @@ export default class CircularLinkedList<T> extends BaseLinkedList<T> {
       return true;
     }
     if (this.headNode) {
-      this.lastNode.next = this.headNode.next;
+      this.lastNode!.next = this.headNode.next;
       this.headNode = this.headNode.next;
     }
     return true;
@@ -71,7 +71,7 @@ export default class CircularLinkedList<T> extends BaseLinkedList<T> {
       return false;
     }
     const previousNode = this.getNodeElement(this.listSize - 2);
-    previousNode.next = this.headNode;
+    previousNode!.next = this.headNode;
     return true;
   }
 
@@ -91,7 +91,7 @@ export default class CircularLinkedList<T> extends BaseLinkedList<T> {
       return this.deleteLastNode();
     }
     const previousNode = this.getNodeElement(index - 1);
-    previousNode.next = previousNode.next.next;
+    previousNode!.next = previousNode!.next!.next;
     return true;
   }
 }
